@@ -30,13 +30,8 @@ services:
       - POSTGRES_USER=user
       - POSTGRES_PASSWORD=password
       - POSTGRES_DB=mydb
-    volumes:
-      - nps_data:/var/lib/postgresql/data
   adminer:
     image: adminer
     restart: always
     ports: 
       - 8080:8080
-
-volumes:
-  nps_data: {}

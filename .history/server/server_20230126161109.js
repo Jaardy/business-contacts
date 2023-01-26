@@ -1,9 +1,8 @@
 const app = require("./app");
-const { runSeed } = require("./db/seed");
+const seed = require("./db/seed");
 
 const { PORT = 3000 } = process.env;
 
-app.listen(PORT, async () => {
-  await runSeed();
+app.listen(PORT, () => {
   console.log(`Server listening at http://localhost:${PORT}`);
 });

@@ -9,11 +9,6 @@ services:
       - db
     ports:
       - 3000:3000
-    environment:
-      - DB=mydb
-      - USER=user
-      - PASSWORD=password
-      - HOST=db
 
   # name for second service
   client:
@@ -23,20 +18,14 @@ services:
     ports:
       - 1234:1234
   db:
-    container_name: db
     image: postgres:15.1-alpine
     restart: always
     environment:
-      - POSTGRES_USER=user
-      - POSTGRES_PASSWORD=password
-      - POSTGRES_DB=mydb
-    volumes:
-      - nps_data:/var/lib/postgresql/data
+      POSTGRES_USER: "user"
+      POSTGRES_PASSWORD: "password"
+      POSTGRES_DB: "mydb"
   adminer:
     image: adminer
     restart: always
     ports: 
       - 8080:8080
-
-volumes:
-  nps_data: {}

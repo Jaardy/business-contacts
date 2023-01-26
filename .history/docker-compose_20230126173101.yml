@@ -15,6 +15,11 @@ services:
       - PASSWORD=password
       - HOST=db
 
+      process.env.DB, 
+    process.env.USER, 
+    process.env.PASSWORD, {
+  host: process.env.HOST,
+
   # name for second service
   client:
     # dockerfile can be in different directory
@@ -23,20 +28,14 @@ services:
     ports:
       - 1234:1234
   db:
-    container_name: db
     image: postgres:15.1-alpine
     restart: always
     environment:
       - POSTGRES_USER=user
       - POSTGRES_PASSWORD=password
       - POSTGRES_DB=mydb
-    volumes:
-      - nps_data:/var/lib/postgresql/data
   adminer:
     image: adminer
     restart: always
     ports: 
       - 8080:8080
-
-volumes:
-  nps_data: {}

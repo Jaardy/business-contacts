@@ -1,5 +1,5 @@
 const { Sequelize, Model } = require("sequelize");
-console.log(process.env.HOST);
+console.log(HOST);
 
 const db = new Sequelize(
   process.env.DB,
@@ -8,7 +8,7 @@ const db = new Sequelize(
   {
     host: process.env.HOST,
     logging: false,
-    dialect: "postgres",
+    dialect: dialect,
   }
 );
 
