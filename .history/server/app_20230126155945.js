@@ -19,15 +19,4 @@ app.get("/contacts", async (req, res, next) => {
   }
 });
 
-app.get("/contacts/:id", async (req, res, next) => {
-  try {
-    const { id } = req.params;
-    const contact = await Contact.findByPk(id);
-    res.send(contact);
-  } catch (error) {
-    console.log(error);
-    res.send(error);
-  }
-});
-
 module.exports = app;

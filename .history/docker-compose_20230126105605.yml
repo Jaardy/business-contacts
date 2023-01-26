@@ -1,12 +1,12 @@
 # services lists the multiple different apps we want to run via docker
 services:
   # name for the service
-  # api:
-  #   # location of the Dockerfile
-  #   build: ./server
-  #   # ports
-  #   ports:
-  #     - 3000:3000
+  api:
+    # location of the Dockerfile
+    build: ./server
+    # ports
+    ports:
+      - 3000:3000
 
   # name for second service
   client:
@@ -16,14 +16,13 @@ services:
     ports:
       - 1234:1234
   db:
-    image: postgres:15.1-alpine
+    image: postgres
     restart: always
     environment:
-      POSTGRES_USER: "user"
-      POSTGRES_PASSWORD: "password"
-      POSTGRES_DB: "mydb"
+      POSTGRES_PASSWORD: example
+
   adminer:
     image: adminer
     restart: always
-    ports: 
+    ports:
       - 8080:8080
